@@ -1,61 +1,77 @@
-//Globals for modifying the planet DOM Element
-let planetColor = 'blue';
-let planetRadius = 15;
-let planetOrbitRadius = 75
-let planetName = 'earth';
+let planets = [];
 
-function orbit(planet) {
+function orbit(sun) {
 
-    const sun = document.createElement('div')
-    sun.setAttribute("id", "sun");
-    sun.style = 'height: 40px; width: 40px; background-color: orange; border-radius: 50%; position: absolute;'
-    sun.style.left = String(planet.x_position - 20) + "px";
-    sun.style.top = String(planet.y_position - 20) + "px";
+   //Drawing the sun
+    const Drawsun = document.createElement('div')
+    Drawsun.setAttribute("id", "sun");
+    Drawsun.style = 'height: ' + String(sun.radius) + 'px; width: ' + String(sun.radius) + 'px; background-color: orange; border-radius: 50%; position: absolute;'
+    Drawsun.style.left = String(sun.x_position) + "px";
+    Drawsun.style.top = String(sun.y_position) + "px";
     const body = $('body')
-    body.append(sun)
+    body.append(Drawsun)
 
     function move() {
+         
+         //Orbit each planet in planets around sun
+         for (let i = 0; i < planets.length; i++){
+            //Modifying the planet DOM Element's position of the page to simulate orbit
+            let x = sun.x_position + (planets[i].planetOrbitRadius *
+                                 Math.cos(planets[i].orbit_angle*(Math.PI/180)));
+            let y = sun.y_position + (planets[i].planetOrbitRadius *
+                                 Math.sin(planets[i].orbit_angle*(Math.PI/180)));
 
-          //Modifying the planet DOM Element's position of the page to simulate orbit
-          let x = planet.x_position+(planetOrbitRadius *
-                               Math.cos(planet.orbit_angle*(Math.PI/180)));
-          let y = planet.y_position+(planetOrbitRadius *
-                               Math.sin(planet.orbit_angle*(Math.PI/180)));
+            planets[i].orbit_angle += (10 / planets[i].orbitSpeed);
+            if (planets[i].orbit_angle > 360) {
+               planets[i].orbit_angle = 0;
+            };
 
-          planet.orbit_angle += 1;
-          if (planet.orbit_angle > 360) {
-             planet.orbit_angle = 0;
-          };
-
-          const satellite = document.createElement('div')
-          satellite.setAttribute("id", "planet");
-          satellite.style.height = String(planetRadius) + "px";
-          satellite.style.width = String(planetRadius) + "px";
-          satellite.style.left = String(x) + "px";
-          satellite.style.top = String(y) + "px";
-          satellite.style.backgroundColor = planetColor;
-          satellite.style.borderRadius = "50%";
-          satellite.style.position = "absolute";
-          if ($("#planet").length > 0){
-            const old_planet = document.getElementById("planet");
-            old_planet.remove();
-          }
-          body.append(satellite)
-          setTimeout(move, planet.orbit_speed);
+            const satellite = document.createElement('div')
+            satellite.setAttribute("id", String(planets[i].planetName));
+            satellite.style.height = String(planets[i].planetRadius) + "px";
+            satellite.style.width = String(planets[i].planetRadius) + "px";
+            satellite.style.left = String(x) + "px";
+            satellite.style.top = String(y) + "px";
+            satellite.style.backgroundColor = planets[i].planetColor;
+            satellite.style.borderRadius = "50%";
+            satellite.style.position = "absolute";
+            if ($("#" + String(planets[i].planetName)).length > 0){
+               const old_planet = 
+               document.getElementById(String(planets[i].planetName));
+               old_planet.remove();
+            }
+            body.append(satellite)
+         }
+         setTimeout(move, 5);
     };
 
        move();
 
-    };
+};
 
  class Planet  {
-   constructor(x, y, s, n){
-    this.x_position = x;
-    this.y_position = y;
+   constructor(orbitSpeed, planetColor, planetRadius, planetOrbitRadius, 
+      planetName){
     this.orbit_angle = 0;
-    this.orbit_speed = s;
+    this.orbitSpeed = orbitSpeed;
+    this.planetColor = planetColor;
+    this.planetRadius = planetRadius;
+    this.planetOrbitRadius = planetOrbitRadius;
+    this.planetName = planetName;
    }
  };
+
+ class Sun {
+    constructor(){
+       this.x_position = 580;
+       this.y_position = 380;
+       this.radius = 20;
+    }
+ }
+
+ //Automativally add earth to planets
+
+ planets.push(new Planet(10, 'blue', 15, 75, 'earth'));
 
  //Hardcoded data for each different planet in the solar system
 const planetNames = ["mercury", "venus", "earth", "mars", "jupiter", "saturn",
@@ -75,8 +91,8 @@ function displayPlanets(){
    //Mercury Button
    const mercuryButton = document.createElement("input");
    mercuryButton.name = "planet";
-   mercuryButton.id = "mercury";
-   mercuryButton.type = "radio";
+   mercuryButton.id = "mercuryButton";
+   mercuryButton.type = "checkbox";
    mercuryButton.className = "planet";
    body.append(mercuryButton);
    body.append('<br/>');
@@ -89,8 +105,8 @@ function displayPlanets(){
    //Venus Button
    const venusButton = document.createElement("input");
    venusButton.name = "planet";
-   venusButton.id = "venus";
-   venusButton.type = "radio";
+   venusButton.id = "venusButton";
+   venusButton.type = "checkbox";
    venusButton.className = "planet";
    body.append(venusButton);
    body.append('<br/>');
@@ -103,9 +119,10 @@ function displayPlanets(){
    //Earth Button
    const earthButton = document.createElement("input");
    earthButton.name = "planet";
-   earthButton.id = "earth";
-   earthButton.type = "radio";
+   earthButton.id = "earthButton";
+   earthButton.type = "checkbox";
    earthButton.className = "planet";
+   earthButton.checked = true;
    body.append(earthButton);
    body.append('<br/>');
 
@@ -117,8 +134,8 @@ function displayPlanets(){
    //Mars Button
    const marsButton = document.createElement("input");
    marsButton.name = "planet";
-   marsButton.id = "mars";
-   marsButton.type = "radio";
+   marsButton.id = "marsButton";
+   marsButton.type = "checkbox";
    marsButton.className = "planet";
    body.append(marsButton);
    body.append('<br/>');
@@ -131,8 +148,8 @@ function displayPlanets(){
    //Jupiter Button
    const jupiterButton = document.createElement("input");
    jupiterButton.name = "planet";
-   jupiterButton.id = "jupiter";
-   jupiterButton.type = "radio";
+   jupiterButton.id = "jupiterButton";
+   jupiterButton.type = "checkbox";
    jupiterButton.className = "planet";
    body.append(jupiterButton);
    body.append('<br/>');
@@ -145,8 +162,8 @@ function displayPlanets(){
    //Saturn Button
    const saturnButton = document.createElement("input");
    saturnButton.name = "planet";
-   saturnButton.id = "saturn";
-   saturnButton.type = "radio";
+   saturnButton.id = "saturnButton";
+   saturnButton.type = "checkbox";
    saturnButton.className = "planet";
    body.append(saturnButton);
    body.append('<br/>');
@@ -159,8 +176,8 @@ function displayPlanets(){
    //Uranus Button
    const uranusButton = document.createElement("input");
    uranusButton.name = "planet";
-   uranusButton.id = "uranus";
-   uranusButton.type = "radio";
+   uranusButton.id = "uranusButton";
+   uranusButton.type = "checkbox";
    uranusButton.className = "planet";
    body.append(uranusButton);
    body.append('<br/>');
@@ -173,8 +190,8 @@ function displayPlanets(){
    //Neptune Button
    const neptuneButton = document.createElement("input");
    neptuneButton.name = "planet";
-   neptuneButton.id = "neptune";
-   neptuneButton.type = "radio";
+   neptuneButton.id = "neptuneButton";
+   neptuneButton.type = "checkbox";
    neptuneButton.className = "planet";
    body.append(neptuneButton);
    body.append('<br/>');
@@ -185,11 +202,28 @@ function displayPlanets(){
    const buttons = document.getElementsByClassName("planet");
 
    for (let i = 0; i < buttons.length; i++){
-      buttons[i].addEventListener('click', function handleClick() {
-         planetColor = planetColors[planetNames.indexOf(String(buttons[i].id))]
-         planetRadius = planetRadii[planetNames.indexOf(String(buttons[i].id))]
-         planetOrbitRadius = planetOrbit[planetNames.indexOf(String(buttons[i].id))]
-         planetName = String(buttons[i].id);
+      buttons[i].addEventListener('change', function handleClick() {
+         if(buttons[i].checked) {
+            //checked planet
+            planets.push(new Planet(10, planetColors[planetNames.indexOf(String(buttons[i].id.slice(0, -6)))], 
+            planetRadii[planetNames.indexOf(String(buttons[i].id.slice(0, -6)))], 
+            planetOrbit[planetNames.indexOf(String(buttons[i].id.slice(0, -6)))], 
+            buttons[i].id.slice(0, -6)));
+            console.log(planets);
+         } else {
+            //unchecked planet
+            for(let c = 0; c < planets.length; c++){
+               if (planets[c].planetName == buttons[i].id.slice(0, -6)){
+                  //remove planet from DOM
+                  if ($("#" + String(planets[c].planetName)).length > 0){
+                     const old_planet = 
+                     document.getElementById(String(planets[c].planetName));
+                     old_planet.remove();
+                  }
+                  planets.splice(c, 1);
+               }
+            }
+         }
       });
    }
 }
