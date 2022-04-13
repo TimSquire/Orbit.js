@@ -70,7 +70,6 @@ function orbit(sun) {
  }
 
  //Automativally add earth to planets
-
  planets.push(new Planet(10, 'blue', 15, 75, 'earth'));
 
  //Hardcoded data for each different planet in the solar system
@@ -83,117 +82,27 @@ const planetOrbit = [29.025, 54.225, 75, 114, 200, 250, 270, 300];
 
 function displayPlanets(){
    const body = $('body')
-   //Mercury Label
-   const mercuryLabel = document.createElement("LABEL");
-   mercuryLabel.innerText = "Mercury: ";
-   body.append(mercuryLabel);
 
-   //Mercury Button
-   const mercuryButton = document.createElement("input");
-   mercuryButton.name = "planet";
-   mercuryButton.id = "mercuryButton";
-   mercuryButton.type = "checkbox";
-   mercuryButton.className = "planet";
-   body.append(mercuryButton);
-   body.append('<br/>');
+   for(let i = 0; i < planetNames.length; i++){
+      //Planet Label
+      const planetLabel = document.createElement("LABEL");
+      planetLabel.innerText = String(planetNames[i]) + ": ";
+      body.append(planetLabel);
 
-   //Venus Label
-   const venusLabel = document.createElement("LABEL");
-   venusLabel.innerText = "Venus: ";
-   body.append(venusLabel);
+      //Planet Checkbox
+      const planetButton = document.createElement("input");
+      planetButton.name = "planet";
+      planetButton.id = String(planetNames[i]) + "Button";
+      planetButton.type = "checkbox";
+      planetButton.className = "planet";
+      body.append(planetButton);
+      body.append('<br/>');
 
-   //Venus Button
-   const venusButton = document.createElement("input");
-   venusButton.name = "planet";
-   venusButton.id = "venusButton";
-   venusButton.type = "checkbox";
-   venusButton.className = "planet";
-   body.append(venusButton);
-   body.append('<br/>');
+      if(String(planetNames[i]) == 'earth'){
+         planetButton.checked = true;
+      }
+   }
 
-   //Earth Label
-   const earthLabel = document.createElement("LABEL");
-   earthLabel.innerText = "Earth: ";
-   body.append(earthLabel);
-
-   //Earth Button
-   const earthButton = document.createElement("input");
-   earthButton.name = "planet";
-   earthButton.id = "earthButton";
-   earthButton.type = "checkbox";
-   earthButton.className = "planet";
-   earthButton.checked = true;
-   body.append(earthButton);
-   body.append('<br/>');
-
-   //Mars Label
-   const marsLabel = document.createElement("LABEL");
-   marsLabel.innerText = "Mars: ";
-   body.append(marsLabel);
-
-   //Mars Button
-   const marsButton = document.createElement("input");
-   marsButton.name = "planet";
-   marsButton.id = "marsButton";
-   marsButton.type = "checkbox";
-   marsButton.className = "planet";
-   body.append(marsButton);
-   body.append('<br/>');
-
-   //Jupiter Label
-   const jupiterLabel = document.createElement("LABEL");
-   jupiterLabel.innerText = "Jupiter: ";
-   body.append(jupiterLabel);
-
-   //Jupiter Button
-   const jupiterButton = document.createElement("input");
-   jupiterButton.name = "planet";
-   jupiterButton.id = "jupiterButton";
-   jupiterButton.type = "checkbox";
-   jupiterButton.className = "planet";
-   body.append(jupiterButton);
-   body.append('<br/>');
-
-   //saturn Label
-   const saturnLabel = document.createElement("LABEL");
-   saturnLabel.innerText = "Saturn: ";
-   body.append(saturnLabel);
-
-   //Saturn Button
-   const saturnButton = document.createElement("input");
-   saturnButton.name = "planet";
-   saturnButton.id = "saturnButton";
-   saturnButton.type = "checkbox";
-   saturnButton.className = "planet";
-   body.append(saturnButton);
-   body.append('<br/>');
-
-   //Uranus Label
-   const uranusLabel = document.createElement("LABEL");
-   uranusLabel.innerText = "Uranus: ";
-   body.append(uranusLabel);
-
-   //Uranus Button
-   const uranusButton = document.createElement("input");
-   uranusButton.name = "planet";
-   uranusButton.id = "uranusButton";
-   uranusButton.type = "checkbox";
-   uranusButton.className = "planet";
-   body.append(uranusButton);
-   body.append('<br/>');
-
-   //Neptune Label
-   const neptuneLabel = document.createElement("LABEL");
-   neptuneLabel.innerText = "Neptune: ";
-   body.append(neptuneLabel);
-
-   //Neptune Button
-   const neptuneButton = document.createElement("input");
-   neptuneButton.name = "planet";
-   neptuneButton.id = "neptuneButton";
-   neptuneButton.type = "checkbox";
-   neptuneButton.className = "planet";
-   body.append(neptuneButton);
    body.append('<br/>');
    body.append('<br/>');
    body.append('<br/>');
@@ -205,7 +114,7 @@ function displayPlanets(){
       buttons[i].addEventListener('change', function handleClick() {
          if(buttons[i].checked) {
             //checked planet
-            planets.push(new Planet(10, planetColors[planetNames.indexOf(String(buttons[i].id.slice(0, -6)))], 
+            planets.push(new Planet(20, planetColors[planetNames.indexOf(String(buttons[i].id.slice(0, -6)))], 
             planetRadii[planetNames.indexOf(String(buttons[i].id.slice(0, -6)))], 
             planetOrbit[planetNames.indexOf(String(buttons[i].id.slice(0, -6)))], 
             buttons[i].id.slice(0, -6)));
@@ -252,6 +161,48 @@ function planetInfo() {
    })
 }
 
+function addPlanet(){
+   const body = $('body');
+
+   //New Planet Name Label
+   const nameLabel = document.createElement("LABEL");
+   nameLabel.innerText = "Name of Planet: ";
+   body.append(nameLabel);
+
+   const newPlanetName = document.createElement("input");
+   newPlanetName.id = "newPlanetName";
+   newPlanetName.type = "text";
+   body.append(newPlanetName);
+   body.append('<br/>');
+   body.append('<br/>');
+
+   //New Planet Colour Label
+   const colourLabel = document.createElement("LABEL");
+   colourLabel.innerText = "Colour of Planet: ";
+   body.append(colourLabel);
+
+   const newPlanetColour = document.createElement("input");
+   newPlanetColour.id = "newPlanetColour";
+   newPlanetColour.type = "text";
+   body.append(newPlanetColour);
+   body.append('<br/>');
+   body.append('<br/>');
+
+   const submitButton = document.createElement("input");
+   submitButton.id = "submit";
+   submitButton.type = "submit";
+   submitButton.value = "Add New Planet!";
+   body.append(submitButton);
+   body.append('<br/>');
+
+   const submit = document.getElementById("submit");
+   submit.addEventListener("click", function( event ) {
+      planets.push(new Planet(20, String(newPlanetColour.value), 15, 50, String(newPlanetName.value)));
+      planetNames.push(String(newPlanetName.value));
+      planetColors.push(String(newPlanetColour.value));
+   });
+
+}
 
 
 

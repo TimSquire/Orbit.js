@@ -1,5 +1,6 @@
 "use strict"
-displayPlanets();
 const s = new Sun();
+displayPlanets();
+addPlanet();
 orbit(s);
 planetInfo();
