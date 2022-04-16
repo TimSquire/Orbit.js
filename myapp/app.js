@@ -29,6 +29,14 @@ app.get('/', (req, res) => {
 	res.sendFile(path.join(__dirname, 'pub/examples.html'))
 })
 
+app.get('/api', (req, res) => {
+	// sending a string
+	//res.send('This should be the root route!')
+
+	//sending some HTML
+	res.sendFile(path.join(__dirname, 'pub/api.html'))
+})
+
 // Error codes
 app.get('/problem', (req, res) => {
 	// You can indicate a status code to send back

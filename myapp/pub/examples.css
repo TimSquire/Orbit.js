@@ -1,0 +1,84 @@
+#para {
+    margin-left: 100px;
+    background-color: lightcoral;
+    border-radius: 15px;
+    padding: 20px;
+    border-width: 1px;
+    width: 300px;
+  }
+  
+  table {
+    font-family: 'Droid serif';
+    border-collapse: collapse;
+  }
+   td, th {
+    border: 1px solid #b48608;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even){background-color: #f2f2f2;}
+  
+  tr:hover {background-color: #ddd;}
+  
+  th {
+    font-family: 'Droid serif', serif; font-size: 30px; ;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    font-style: italic;
+    background-color: #b48608;
+    font-weight: 400;
+    color: white;
+  }
+  
+  .input {
+    box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      border: 1px solid #C2C2C2;
+      border-radius: 3px;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      padding: 7px;
+      outline: none;
+  }
+  
+  .input:focus{
+    border: 1px solid #b48608;
+  }
+  
+  .button {
+    border: 2px solid #C2C2C2;
+    position: relative;
+    background-color: #b48608;
+    font-size: 12px;
+    color: #FFFFFF;
+    padding: 8px;
+    width: 100px;
+    text-align: center;
+    transition-duration: 0.4s;
+    text-decoration: none;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 3px;
+  }
+  
+  .button:after {
+    content: "";
+    background: #f1f1f1;
+    display: block;
+    position: absolute;
+    padding-top: 300%;
+    padding-left: 350%;
+    margin-left: -20px !important;
+    margin-top: -120%;
+    opacity: 0;
+    transition: all 1s
+  }
+  
+  .button:active:after {
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+    transition: 0s
+  }

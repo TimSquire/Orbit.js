@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html>
+   <head>
+      <script type="text/javascript"
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">
+      </script>
+      <link rel="stylesheet" href="orbit.css">
+   </head>
+   <body>
+       <h1>API Documentation</h1>
+       <p class="link"><a href="examples.html">Examples</a></p>
+
+       <h3 class="ex1">Getting Started</h3>
+       <p>To get started using orbit.js, you must add the following lines of code to your file:</p>
+       <pre>
+         <code>
+            &lt;script type="text/javascript"
+               src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"&gt;
+            &lt;/script&gt;
+            &lt;script defer type="text/javascript" src="orbit.js"&gt;&lt;/script&gt;
+            &lt;link rel="stylesheet" href="orbit.css"&gt;
+         </code>
+      </pre>
+      <h3 class="ex1">API Objects</h3>
+      <p>To create an instance of orbit.js, simply use the following line of code:</p>
+      <pre>
+         <code>
+            const orbit = new Orbit(width, height, radius, colour);
+         </code>
+      </pre>
+      <p>The parameter width specifies the position of the width of the sun being orbited. The parameter height specifies the 
+         position of the height of the sun being orbited. The parameter radius specifies the radius of the sun being orbited. The
+         parameter colour is optional and specifies the colour of the sun being orbited. When left unspecified, colour will default to orange.
+      </p>
+      </br>
+      </br>
+      <p>To create an instance of a Planet, simply use the following line of code:</p>
+      <pre>
+         <code>
+            Orbit.makePlanet(speed, colour, radius, orbit, name)
+         </code>
+      </pre>
+      <p>The parameter speed specifies how fast the planet will orbit the sun. The parameter colour specifies the 
+         colour of the planet. The parameter radius specifies the radius of the planet. The
+         parameter orbit specifies the radius that the planet orbits the sun. The parameter name specifies the names
+         of the planet.
+      </p>
+      <h3 class="ex1">API Functions</h3>
+      <h4>orbit()</h4>
+      <pre>
+         <code>
+            Orbit.orbit(planets);
+         </code>
+      </pre>
+      <p>The orbit function is called with one argument: planets. Planets is an array of planets that the animation will begin with.
+         Elements in planets can be strings with the names of planets in the solar system. Or they can be Planet objects.
+      </p>
+      <h4>displayPlanets()</h4>
+      <pre>
+         <code>
+            Orbit.displayPlanets();
+         </code>
+      </pre>
+      <p>The displayPlanets function is called with 0 arguments. This function will add a table to the DOM allowing a user to toggle between
+         which planets they want to display.
+      </p>
+      <h4>addPlanet()</h4>
+      <pre>
+         <code>
+            Orbit.addPlanet();
+         </code>
+      </pre>
+      <p>The addPlanet function is called with 0 arguments. This function will add input text boxes and a submit button 
+         to the DOM allowing the user to add a customized planet to the animation.
+      </p>
+      <h4>planetInfo()</h4>
+      <pre>
+         <code>
+            Orbit.planetInfo();
+         </code>
+      </pre>
+      <p>The planetInfo function is called with 0 arguments. The function will allow the user to hover over the sun object
+         to reveal information about each planet in the animation. By clicking on the sun, the informational pop-up will cycle through each of
+         the planets being animated.
+      </p>
+   </br>
+   </body>
+</html>

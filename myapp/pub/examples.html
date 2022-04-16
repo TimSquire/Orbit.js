@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
    <head>
       <script type="text/javascript"
@@ -11,6 +10,55 @@
    </head>
    <body>
        <h1>Orbit.js</h1>
-       <h3>Select a Planet!</h3>
+   </br>
+   <p class="link"><a href="api.html">API Documentation</a></p>
+   <h3 class="ex1">Example #1</h3>
+   <pre>
+      <code>
+         const orbit = new Orbit(screen.width / 2, 625, 20);
+         orbit.orbit(['mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune']);
+         orbit.planetInfo();
+      </code>
+   </pre>
+   <p>Here we have an example of the library in which there is very minimal user interaction. The user can hover over the sun
+      to be presented with information regarding the radius of each planet on display. The user clicks the sun to cycle through
+      information for each planet. In this example, the planets are actually scaled to size accurately (not including the sun).
+      These exact planet sizes are a default in the library but can be overwritten by the user. This example could be used in a 
+      program where the developer wants to display an accurate representation of the planets in our solar system, without the need 
+      for changing the animation, such as a figure for an educational site on the solar system.
+   </p>
+   <h3 class="ex2">Example #2</h3>
+   <pre>
+      <code>
+         const orbit2 = new Orbit(((screen.width / 4) * 3) - 100, 1550, 20, '#aa66cc');
+         const pluto = orbit2.makePlanet(33, 'black', 1062, 330, 'pluto');
+         orbit2.orbit(['mercury', 'venus', 'earth', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', pluto]);
+         orbit2.displayPlanets();
+         orbit2.planetInfo();
+      </code>
+   </pre>
+   <p class="para2"> Here we have an example of the library in which there is more user interaction. The user can toggle checkboxes
+      to determine which planets they want displayed on the screen. Furthermore, they can click the remove buttons to delete a planet
+      completely. The user can still hover their cursor over the sun to invoke a pop-up with information regarding each planet. This 
+      example could be used once again in an educational setting where students are encouraged to compare the orbits of 2 planets at a 
+      time or perhaps to observe what the solar system would look like without particular planets. This example also shows that the colour 
+      of the sun can be set to anything. Pluto is so small compared to the others, it can barely be seen!
+   </p>
+   <h3 class="ex3">Example #3</h3>
+   <pre>
+      <code>
+         const orbit3 = new Orbit(((screen.width / 4) * 3) - 100, 2450, 20, '#33FF66');
+         const apes = orbit2.makePlanet(26, 'black', 30000, 280, 'planetOfTheApes');
+         orbit3.orbit(['mercury', 'venus', 'earth', 'mars', 'jupiter', apes]);
+         orbit3.addPlanet();
+         orbit3.displayPlanets();
+         orbit3.planetInfo();
+      </code>
+   </pre>
+   <p class="para3"> Here we have an example of the library in which there is maximum user interaction. In addition to the functionality
+      from examples 1 and 2, users are able to add custom planets to the animation. This allows the user to completely customize their
+      own solar system! This example could be used in an educational setting in which students are encouraged to add moons or planets from
+      other solar systems or galaxies to the animation and compare them against planets of our solar system.
+   </p>
    </body>
 </html>
