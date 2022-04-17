@@ -7,6 +7,12 @@
   width: 300px;
 }
 
+.desc {
+  font-style: italic;
+  text-align: center;
+  margin-top: 0px;
+}
+
 p {
   width: 70%;
   margin-left: 15%;
