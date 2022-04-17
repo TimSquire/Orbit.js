@@ -7,6 +7,14 @@
    const planetRadii = [2.85, 7.125, 7.5, 3.975, 75.9, 70.875, 30, 29.1];
    const planetOrbit = [30, 56, 77.5, 117.5, 175, 250, 270, 300];
    const planetSpeed = [15, 17, 19, 21, 24, 26, 28, 30];
+   const facts = ["has a very thin, almost undetectable atmosphere composed of sodium and potassium gas",
+   "is composed mainly of carbon dioxide with minor amounts of nitrogen and trace amounts of nitrogen, helium, neon, and argon",
+"is primarily composed of nitrogen and oxygen. Minor gases include and carbon dioxide, ozone, argon, and helium", 
+"is a thin layer composed mainly of carbon dioxide. Nitrogen, argon, and small traces of oxygen and water vapor are also present",
+"contains mainly helium and hydrogen with trace amounts of water, ammonia, methane, and other carbon compounds",
+"has a thick atmosphere composed of hydrogen and helium",
+"is composed mainly of hydrogen and minor amounts of helium Methane is present in minor amounts",
+"consists mainly of hydrogen and helium, but about 2.5-3% of the atmosphere is methane"];
    let suns = 0;
 
    class Planet {
@@ -63,6 +71,7 @@
                planetOrbit.push(String(planetsArray[c].planetOrbitRadius));
                planetRadii.push(String(planetsArray[c].planetRadius));
                planetSpeed.push(String(planetsArray[c].orbitSpeed));
+               facts.push("is not in the solar system");
             }
          }
          console.log(planetsArray);
@@ -291,8 +300,8 @@
                   //para.style.top = String(sunElement.style.top.slice(0, -2)) + "px";
                   //para.style.left = String(sunElement.style.left.slice(0, -2) * 1.8) + "px";
                   //para.style.position = "absolute";
-            
-                  para.innerText = String(curPlanet.planetName) + " is " + String(((planetRadii[planetNames.indexOf(String(curPlanet.planetName))]) * 849.46666667) + 0.5).split(".")[0] + ` kilometers in diameter!`;
+                  let factsInd = planetNames.indexOf(String(curPlanet.planetName));
+                  para.innerText = String(curPlanet.planetName) + " " + facts[factsInd];
                   sunElement[b].appendChild(para);
                }
             })
@@ -315,8 +324,8 @@
                //para.style.top = String(sunElement.style.top.slice(0, -2)) + "px";
                //para.style.left = String(sunElement.style.left.slice(0, -2) * 1.8) + "px";
                //para.style.position = "absolute";
-         
-               para.innerText = String(curPlanet.planetName) + " is " + String(((planetRadii[planetNames.indexOf(String(curPlanet.planetName))]) * 849.46666667) + 0.5).split(".")[0] + ` kilometers in diameter!`;
+               let factsInd = planetNames.indexOf(String(curPlanet.planetName));
+               para.innerText = String(curPlanet.planetName) + " " + facts[factsInd];
                sunElement[b].appendChild(para);
                }
             })
@@ -419,6 +428,7 @@
             planetRadii.push(String(newPlanetRadii.value / 849.46666667));
             planetOrbit.push(String(newPlanetOrbit.value));
             planetSpeed.push(String(newPlanetSpeed.value));
+            facts.push("is not in the solar system");
 
             //Clear inputs
             newPlanetName.value = '';
