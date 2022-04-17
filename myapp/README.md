@@ -7,5 +7,5 @@ To get started using orbit.js, you must add the following lines of code to your 
   </script>
   <script defer type="text/javascript" src="orbit.js"><script>
   <link rel="stylesheet" href="orbit.css">
-# Documentation #
+# Documentation: # 
 https://dry-savannah-94143.herokuapp.com/api.html
