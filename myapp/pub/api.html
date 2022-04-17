@@ -5,7 +5,7 @@
       <script type="text/javascript"
         src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">
       </script>
-      <link rel="stylesheet" href="orbit.css">
+      <link rel="stylesheet" href="examples.css">
    </head>
    <body>
        <h1>API Documentation</h1>
@@ -26,7 +26,7 @@
       <p>To create an instance of orbit.js, simply use the following line of code:</p>
       <pre>
          <code>
-            const orbit = new Orbit(width, height, radius, colour);
+            const Orbit = new Orbit(width, height, radius, colour);
          </code>
       </pre>
       <p>The parameter width specifies the position of the width of the sun being orbited. The parameter height specifies the 
@@ -54,7 +54,9 @@
          </code>
       </pre>
       <p>The orbit function is called with one argument: planets. Planets is an array of planets that the animation will begin with.
-         Elements in planets can be strings with the names of planets in the solar system. Or they can be Planet objects.
+         Elements in planets can be strings with the names of planets in the solar system. Or they can be Planet objects. If the developer
+         wants the animation to begin with some planets from the solar system, this is done using a string with that planet's name, ex. 'jupiter'. However,
+         if the developer would like the animation to begin with alternate planets, these must be added using makePlanet and pushed to the planets array.
       </p>
       <h4>displayPlanets()</h4>
       <pre>
@@ -63,7 +65,8 @@
          </code>
       </pre>
       <p>The displayPlanets function is called with 0 arguments. This function will add a table to the DOM allowing a user to toggle between
-         which planets they want to display.
+         which planets they want to display. This table will also allow users to remove planets entirely from the list of planets. This table
+         also serves to provide the user with information pertaining to each planet in orbit.
       </p>
       <h4>addPlanet()</h4>
       <pre>
@@ -81,7 +84,7 @@
          </code>
       </pre>
       <p>The planetInfo function is called with 0 arguments. The function will allow the user to hover over the sun object
-         to reveal information about each planet in the animation. By clicking on the sun, the informational pop-up will cycle through each of
+         to reveal information about the atmosphere of each planet in the animation. By clicking on the sun, the informational pop-up will cycle through each of
          the planets being animated.
       </p>
    </br>

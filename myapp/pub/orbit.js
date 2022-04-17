@@ -2,6 +2,8 @@
    //Hardcoded data for each different planet in the solar system
    const planetNames = ["mercury", "venus", "earth", "mars", "jupiter", "saturn",
    "uranus", "neptune"];
+   const factsPlanets = ["mercury", "venus", "earth", "mars", "jupiter", "saturn",
+   "uranus", "neptune"];
    const planetColors = ["#ada8a5", "#a57c1b", "blue", "#9C2E35", "#d8ca9d", 
    "#ead6b8", "#d1e7e7", "#5b5ddf"];
    const planetRadii = [2.85, 7.125, 7.5, 3.975, 75.9, 70.875, 30, 29.1];
@@ -300,7 +302,7 @@
                   //para.style.top = String(sunElement.style.top.slice(0, -2)) + "px";
                   //para.style.left = String(sunElement.style.left.slice(0, -2) * 1.8) + "px";
                   //para.style.position = "absolute";
-                  let factsInd = planetNames.indexOf(String(curPlanet.planetName));
+                  let factsInd = factsPlanets.indexOf(String(curPlanet.planetName));
                   para.innerText = String(curPlanet.planetName) + " " + facts[factsInd];
                   sunElement[b].appendChild(para);
                }
@@ -324,7 +326,7 @@
                //para.style.top = String(sunElement.style.top.slice(0, -2)) + "px";
                //para.style.left = String(sunElement.style.left.slice(0, -2) * 1.8) + "px";
                //para.style.position = "absolute";
-               let factsInd = planetNames.indexOf(String(curPlanet.planetName));
+               let factsInd = factsPlanets.indexOf(String(curPlanet.planetName));
                para.innerText = String(curPlanet.planetName) + " " + facts[factsInd];
                sunElement[b].appendChild(para);
                }
