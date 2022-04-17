@@ -303,7 +303,12 @@
                   //para.style.left = String(sunElement.style.left.slice(0, -2) * 1.8) + "px";
                   //para.style.position = "absolute";
                   let factsInd = factsPlanets.indexOf(String(curPlanet.planetName));
-                  para.innerText = String(curPlanet.planetName) + " " + facts[factsInd];
+                  if (factsInd == -1){
+                     para.innerText = String(curPlanet.planetName) + " is not in the solar system!";
+                  } else {
+                     para.innerText = String(curPlanet.planetName) + " " + facts[factsInd];
+                  }
+            
                   sunElement[b].appendChild(para);
                }
             })
@@ -327,7 +332,11 @@
                //para.style.left = String(sunElement.style.left.slice(0, -2) * 1.8) + "px";
                //para.style.position = "absolute";
                let factsInd = factsPlanets.indexOf(String(curPlanet.planetName));
-               para.innerText = String(curPlanet.planetName) + " " + facts[factsInd];
+               if (factsInd == -1){
+                  para.innerText = String(curPlanet.planetName) + " is not in the solar system!";
+               } else {
+                  para.innerText = String(curPlanet.planetName) + " " + facts[factsInd];
+               }
                sunElement[b].appendChild(para);
                }
             })
