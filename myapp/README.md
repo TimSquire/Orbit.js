@@ -1,5 +1,3 @@
-# Landing Page: #
-https://dry-savannah-94143.herokuapp.com/
 # Getting Started: #
 To get started using orbit.js, you must add the following lines of code to your file:
   ```
